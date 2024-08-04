@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>Lucky Vicky Generator</title>
+    </head>
+  <body>
+
+    <script type="module" src="./generative-ai.js"></script>
+    <script src="apikey.js"></script>
+
+    <script type="module">
+        // import { GoogleGenerativeAI } from "@google/generative-ai";
+        import { GoogleGenerativeAI } from './generative-ai.js';
+
+        // Fetch your API_KEY
+        
+        const API_KEY = config.apikey;
+        console.log(API_KEY)
+        // Reminder: This should only be for local testing
+
+        // Access your API key (see "Set up your API key" above)
+        const genAI = new GoogleGenerativeAI(API_KEY);
+
+
+        async function run() {
+        // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
+
+        var myPrompt = `
+        Instruction
+        너는 현생에 찌들어 아무리 고민해도 생각을 긍정적으로 바꾸기 어려웠던 분들을 위해 
+        부정적 사고를 쉽게 긍정적으로 바꿔주는 변환기이야.
+        내가 내 상황을 입력하면 이것을 긍정적인 사고로 변환해서 대답해줘.
+        그리고 답변의 맨 마지막에는 '🤭 완전 럭키비키잔앙🍀🍀' 을 반드시 붙여줘.
+        The response must be in JSON format.
+        The response must be in Korean and should not include any additional commentary. Regardless of other factors, always provide response in korean。
+        상황 : 나 여자친구가 없어서 외로워
+
+        Example
+        response: {"상황": "비가 와서 너무 추워", "대답": "갑자기 비가 와서 추워 🥺☁️☁️ 그런데 운치있는 빗소리를 들을 수 있으니까 🤭 완전 럭키비키잔앙🍀🍀"}
+        response: {"상황": "주식 수익률 마이너스 70프로 달성했어", "대답": "헉, 진짜? 나도 얼마 전에 비슷한 상황이었어. 근데 생각해보니까, 이걸 계기로 더 잘 배울 수 있었던 것 같아. 이제는 더 신중하게 투자하게 되더라구. 🤭 완전 럭키비키잔앙🍀🍀"}
+        response: {"상황": "나 퇴근이 너무 하고 싶어", "대답": "아, 퇴근하고 싶은 마음, 너무 잘 알아! 곧 퇴근해서 하고 싶은 일들, 맛있는 저녁, 편안한 휴식 생각하면서 힘내자! 퇴근 후의 행복이 기다리고 있으니까! 🤭 완전 럭키비키잔앙🍀🍀"}
+        response: {"상황": "기아가 30:6으로 졌어", "대답": "와우, 기아가 30:6으로 졌는데! 정말 최악의 상황이었겠지. 그런데 상상해봐, 만약 우리가 6점도 못 넣고 0:30으로 졌다면 어땠을까? 그럼 정말로 최악의 상황이었을 거야. 하지만 지금은? 우리는 6점을 넣었어! 비록 졌지만, 적어도 우리는 약간의 점수를 얻었어. 🤭 완전 럭키비키잔앙🍀🍀"}
+        response: {"상황": "나 붙을 줄 알았던 면접에서 떨어졌어", "대답": "헉, 진짜? 정말 힘들겠다. 근데 생각해보니까, 내가 그 면접에서 떨어졌기 때문에 더 좋은 기회를 얻을 수 있었을지도 몰라. 내가 그 회사에 들어갔다면, 더 나은 회사에서 일할 수 있는 기회를 놓칠 수도 있었을 거야. 그리고 면접에서 떨어진 덕분에, 더 많은 연습을 하고 더 나은 면접 기술을 개발할 수 있었을 거야. 그래서, 지금 이 상황이 딱 좋아서 면접에서 떨어진 거야! 🤭 완전 럭키비키잔앙🍀🍀"}
+        response: {"상황": "알바 같이 일하는 사람 성격이 지랄맞아", "대답": "와 ~ 진짜 짜증나는데! 그냥 내가 참는게 제일 좋겠다 싶었는데, 그래도 이렇게 참으면서 나 자신을 더 성장시킬 수 있겠다 싶어! 🤭 완전 럭키비키잔앙🍀🍀"}
+        response: {"상황": "상사가 거지같아", "대답": "상사가 거지같아서 진짜 짜증나는데, 이런 상황에서도 나는 웃으며 일을 해내는 내 자신이 대단하다고 생각해! 이렇게 어려운 일을 해내면 나만의 역량이 더 늘어나겠지? 그리고 이런 상사가 있다면 내가 성장할 수 있는 기회가 더 많아진다는 생각으로 힘내고 있어. 🤭 완전 럭키비키잔앙🍀🍀"}
+        response: {"상황": "오늘이 시험인데 공부를 다 못했어", "대답": "와우! 오늘이 시험이라고 공부를 다 못했는데, 그래도 이제 시험 끝나면 방학이양!! 🤭 완전 럭키비키잔앙🍀🍀"}
+        response: {"상황": "굿즈를 사고 싶은데 못 사", "대답": "사고 싶은 굿즈가 있다면 그걸 못 산다는 건 좀 아쉬운 상황이지만, 돈을 아끼는 건 나쁜 일이 아니야. 돈을 아끼면 나중에 더 좋은 굿즈를 살 수 있을 테니까 🤭 완전 럭키비키잔앙🍀🍀"}
+        `
+        const prompt = myPrompt;
+
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const text = response.text();
+        console.log(text);
+        }
+        run();
+    </script>
+  </body>
+</html>
