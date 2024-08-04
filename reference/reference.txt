@@ -1,0 +1,3 @@
+API KEY 숨기기 : https://velog.io/@ohwowo_o/javascript-API-key-%EC%88%A8%EA%B8%B0%EA%B8%B0
+Gemini API 튜토리얼 : https://ai.google.dev/gemini-api/docs/get-started/tutorial?lang=web&hl=ko
+조코딩 Gemini API 관련 노션 : https://abrasive-detective-fdd.notion.site/Gemini-API-Firebase-a9c13bde351642a0906256f53ddd0bfa
