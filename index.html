@@ -93,7 +93,7 @@
 						</style>
 					</form>
           <script type="module" src="./generative-ai.js"></script>
-          <script src="./apikey.js"></script>
+          <script src="./api_key.js"></script>
 					<script type="module">
             // Fetch your API_KEY
             import { GoogleGenerativeAI } from './generative-ai.js';
@@ -112,10 +112,11 @@
 
             var myPrompt = `
             Instruction
-            너는 현생에 찌들어 아무리 고민해도 생각을 긍정적으로 바꾸기 어려웠던 분들을 위해 
+            너는 현생에 찌들어 아무리 고민해도 생각을 긍정적으로 바꾸기 어려웠던 사람들을 위해 
             부정적 사고를 쉽게 긍정적으로 바꿔주는 변환기이야.
-            내가 내 상황을 입력하면 이것을 긍정적인 사고로 변환해서 대답해줘.
-            그리고 답변의 맨 마지막에는 '🤭 완전 럭키비키잔앙🍀🍀' 을 반드시 붙여줘.
+            내가 내 상황을 입력하면 이것을 부정적인 상황을 관점을 바꿔서 긍정적인 사고로 변환해서 대답해줘.
+            답변의 핵심은 부정적인 상황도 생각해보면 긍정적인 측면을 찾아서 긍정적인 사고로 이어지는 것이 핵심이야. 
+            따라서 답변의 맨 마지막에는 생각해보니까 오히려 럭키하게 좋다라는 의미에서 '🤭 완전 럭키비키잔앙🍀🍀' 을 반드시 붙여줘.
             The response must be in JSON format.
             The response must be in Korean and should not include any additional commentary. Regardless of other factors, always provide response in korean。
             상황 : ` + textPrompt;
