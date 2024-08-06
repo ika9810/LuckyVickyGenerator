@@ -98,7 +98,9 @@
             // Fetch your API_KEY
             import { GoogleGenerativeAI } from './generative-ai.js';
 
-            const API_KEY = config.apikey;
+            //const API_KEY = config.apikey;
+            const API_KEY = process.env.apikey;
+            ㅌ
             console.log(API_KEY)
             // Reminder: This should only be for local testing
 
